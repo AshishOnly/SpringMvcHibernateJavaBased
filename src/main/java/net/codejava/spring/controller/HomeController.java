@@ -23,7 +23,7 @@ public class HomeController {
 	@Autowired
 	private UserDAO userDao;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping("/")
 	public ModelAndView handleRequest() throws Exception {
 		List<User> listUsers = userDao.list();
 		ModelAndView model = new ModelAndView("UserList");
@@ -35,14 +35,6 @@ public class HomeController {
 	public ModelAndView newUser() {
 		ModelAndView model = new ModelAndView("UserForm");
 		model.addObject("user", new User());
-		return model;		
-	}
-	
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView loginUser() {
-		ModelAndView model = new ModelAndView("UserLogin");
-		model.addObject("login", new User());
 		return model;		
 	}
 	
